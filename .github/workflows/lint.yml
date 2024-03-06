@@ -2,8 +2,16 @@ name: Lint
 on:
   push:
     branches: [main]
+    paths-ignore:
+      - '*.md'
+      - '.github/**'
+      - '.run/**'
   pull_request:
     branches: [main]
+    paths-ignore:
+      - '*.md'
+      - '.github/**'
+      - '.run/**'
 
 jobs:
   lint:
