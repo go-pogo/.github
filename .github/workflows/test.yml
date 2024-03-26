@@ -12,11 +12,10 @@ jobs:
   test:
     strategy:
       matrix:
-        go-version: ['stable', 'oldstable']
+        go-version: ['stable', 'oldstable', 1.20.x]
         platform: [ubuntu-latest, macos-latest, windows-latest]
 
     runs-on: ${{ matrix.platform }}
-
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-go@v5
@@ -33,3 +32,5 @@ jobs:
         uses: codecov/codecov-action@v4
         with:
           files: ./test.coverage
+          flags: unittests
+          token: ${{ secrets.CODECOV_TOKEN }}
